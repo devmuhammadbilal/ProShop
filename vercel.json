@@ -23,7 +23,11 @@
       "destination": "/backend/server.js"
     },
     {
-      "source": "/((?!api|uploads|.*\\..*).*)",
+      "source": "/(.*)\\.(.*)",
+      "destination": "/frontend/$1.$2"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/frontend/index.html"
     }
   ]
