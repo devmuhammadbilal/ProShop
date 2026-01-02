@@ -48,7 +48,8 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
   // Any route that is not an API route will be redirected to index.html
-  app.get('*', (req, res) =>
+ // FIX FOR EXPRESS 5: Use Regex /(.*)/ instead of string '*'
+  app.get(/(.*)/, (req, res) =>
     res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
   );
 } else {
@@ -70,4 +71,5 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Export the app for Vercel
+
 export default app;
